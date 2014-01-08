@@ -6,9 +6,16 @@ var makeStack = function(){
   var size = 0;
 
   instance.push = function(value){
+    storage[size++] = value;
   };
 
   instance.pop = function(){
+    if(size) {
+      var val = storage[size-1];
+      delete storage[size-1];
+      size--;
+      return val;
+    }
   };
 
   instance.size = function(){
