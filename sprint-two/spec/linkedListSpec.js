@@ -9,8 +9,8 @@ describe("linkedList", function() {
   });
 
   it("should have a head and tail", function() {
-    expect(linkedList).to.have.property('head')
-    expect(linkedList).to.have.property('tail')
+    expect(linkedList).to.have.property('head');
+    expect(linkedList).to.have.property('tail');
   });
 
   it("should have methods named 'addToTail', 'removeHead', and 'contains'", function() {
@@ -30,9 +30,7 @@ describe("linkedList", function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
     expect(linkedList.head.value).to.equal(4);
-    console.log(linkedList)
     linkedList.removeHead();
-        console.log(linkedList) 
     expect(linkedList.head.value).to.equal(5);
   });
 
