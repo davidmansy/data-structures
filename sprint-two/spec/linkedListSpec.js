@@ -70,4 +70,13 @@ describe("linkedList", function() {
     expect(linkedList.findElement('c').next.value).to.equal('d');
   });
 
+  it("should return previous element if the value is included in the linkedList and findPrev paramater is true", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    expect(linkedList.findElement('c', true).value).to.equal('b');
+    expect(linkedList.findElement('c', true).next.value).to.equal('c');
+  });
+
 });
