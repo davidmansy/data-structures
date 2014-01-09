@@ -33,6 +33,23 @@ var makeLinkedList = function(){
     return valFound;
   };
 
+  list.removeValue = function(target) {
+
+  };
+
+  list.findElement = function(target) {
+    var currentNode = list.head;
+
+    while(currentNode) {
+      if(currentNode.value === target) {
+        return currentNode;
+      } else {
+        currentNode = currentNode.next; //continue on to next node
+      }
+    }
+    return null;
+  };
+
   return list;
 };
 

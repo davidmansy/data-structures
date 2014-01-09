@@ -60,6 +60,14 @@ describe("linkedList", function() {
     expect(linkedList.head.next.next).to.equal('d');
   });
 
-
+  // add more tests here to test the functionality of linkedList
+  it("should return an element if the value is included in the linkedList", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    expect(linkedList.findElement('c').value).to.equal('c');
+    expect(linkedList.findElement('c').next.value).to.equal('d');
+  });
 
 });
