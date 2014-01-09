@@ -60,6 +60,17 @@ describe("linkedList", function() {
     expect(linkedList.head.next.next.value).to.equal('d');
   });
 
+  it("should remove value if value is last item on list", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    linkedList.removeValue('d');
+    assert.isFalse(linkedList.contains('d'));
+    expect(linkedList.head.next.next.value).to.equal('c');
+    expect(linkedList.head.next.next.next).to.equal(null);
+  });
+
   // add more tests here to test the functionality of linkedList
   it("should return an element if the value is included in the linkedList", function(){
     linkedList.addToTail('a');
