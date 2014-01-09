@@ -50,4 +50,16 @@ describe("linkedList", function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it("should not contain a value that was removed within the list, not only head and tail", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    linkedList.removeValue('c');
+    assert.isFalse(linkedList.contains('c'));
+    expect(linkedList.head.next.next).to.equal('d');
+  });
+
+
+
 });
