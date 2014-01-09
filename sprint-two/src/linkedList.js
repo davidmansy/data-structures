@@ -22,15 +22,7 @@ var makeLinkedList = function(){
     var currentNode = list.head;
     var valFound = false;
 
-    while(currentNode) {
-      if(currentNode.value === target) {
-        valFound = true;
-        currentNode = null; //done searching --> break out of loop
-      } else {
-        currentNode = currentNode.next; //continue on to next node
-      }
-    }
-    return valFound;
+    return Boolean(list.findElement(target));
   };
 
   list.removeValue = function(target) {
