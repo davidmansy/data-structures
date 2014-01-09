@@ -19,6 +19,18 @@ var makeLinkedList = function(){
   };
 
   list.contains = function(target, node){
+    var currentNode = list.head;
+    var valFound = false;
+
+    while(currentNode) {
+      if(currentNode.value === target) {
+        valFound = true;
+        currentNode = null; //done searching --> break out of loop
+      } else {
+        currentNode = currentNode.next; //continue on to next node
+      }
+    }
+    return valFound;
   };
 
   return list;
