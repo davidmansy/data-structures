@@ -26,7 +26,9 @@ var makeLinkedList = function(){
   };
 
   list.removeValue = function(target) {
-
+    var prevNode = list.findElement(target, true);
+    var removedNode = prevNode.next;
+    prevNode.next = removedNode.next;
   };
 
   list.findElement = function(target, findPrev) { //findPrev is true is previous value should be returned

@@ -57,7 +57,7 @@ describe("linkedList", function() {
     linkedList.addToTail('d');
     linkedList.removeValue('c');
     assert.isFalse(linkedList.contains('c'));
-    expect(linkedList.head.next.next).to.equal('d');
+    expect(linkedList.head.next.next.value).to.equal('d');
   });
 
   // add more tests here to test the functionality of linkedList
