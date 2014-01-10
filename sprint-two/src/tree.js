@@ -18,6 +18,21 @@ treeMethods.addChild = function(value){
   this.children.push(newTree);
 };
 
+
+
+treeMethods.removeFromParent = function(tree) {
+  var children = tree.parent.children;
+  for(var i = 0; i < children.length; i++) {
+    if(children[i] === tree) {
+      var temp = children[i];
+      children[i] = undefined;
+      return temp;
+    }
+  }
+  return null;
+
+};
+
 treeMethods.contains = function(target){
 
   var targetFound = false;
