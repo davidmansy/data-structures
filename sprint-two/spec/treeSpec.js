@@ -53,4 +53,17 @@ describe("tree", function() {
     expect(tree.children[0].children[0].parent.value).to.equal(5);
   });
 
+  it("should remove entire branch after calling remove from parent", function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    assert.isTrue(tree.contains(7));
+    assert.isTrue(tree.contains(8));
+    tree.removeFromParent(tree.children[0]);
+    assert.isFalse(tree.contains(7));
+    assert.isTrue(tree.contains(8));
+
+  });
+
 });

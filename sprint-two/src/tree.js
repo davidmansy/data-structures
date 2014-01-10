@@ -25,7 +25,7 @@ treeMethods.removeFromParent = function(tree) {
   for(var i = 0; i < children.length; i++) {
     if(children[i] === tree) {
       var temp = children[i];
-      children[i] = undefined;
+      children.splice(i, 1);
       return temp;
     }
   }
