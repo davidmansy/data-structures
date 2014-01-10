@@ -33,11 +33,11 @@ var makeLinkedList = function(){
     prevNode.next = removedNode.next;
   };
 
-  list.findElement = function(target, findPrev) { //findPrev is true is previous value should be returned
+  list.findElement = function(target) {
     var currentNode = list.head;
 
     while(currentNode) {
-      var prop = findPrev ? currentNode.next.value : currentNode.value;
+      var prop = currentNode.value;
       if(prop === target) {
         return currentNode;
       } else {
