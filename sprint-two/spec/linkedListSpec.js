@@ -31,7 +31,6 @@ describe("linkedList", function() {
     linkedList.addToTail(5);
     linkedList.addToTail(6);
     expect(linkedList.head.value).to.equal(4);
-    expect(linkedList.head.next.prev.value).to.equal(4);
     linkedList.removeHead();
     expect(linkedList.head.value).to.equal(5);
     expect(linkedList.head.prev).to.equal(null);
