@@ -6,6 +6,7 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = this.getHash(k);
+  this._currentSize++;
   if(this._storage.get(i) === undefined) {
     this._storage.set(i, [[k,v]]);  //initialize array bucket with key-value array item
   } else {
@@ -31,7 +32,7 @@ HashTable.prototype.retrieve = function(k){
 
 HashTable.prototype.remove = function(k){
   var i = this.getHash(k);
-
+  this._currentSize--;
   var bucket = this._storage.get(i);
   _.each(bucket, function(keyValuePair, index, bucketArray) {  //key stored at [0], val stored at [1]
     if(keyValuePair[0] === k) {
