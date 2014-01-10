@@ -20,6 +20,19 @@ var makeLinkedList = function(){
     list.head.prev = null;
   };
 
+  list.addToHead = function(value) {
+    var newNode = makeNode(value);
+    if(list.head === null) { //list is empty
+      list.head = newNode;
+      list.tail = newNode;
+    } else { //list is populated
+      list.head.prev = newNode;
+      var temp = list.head;
+      list.head = newNode;
+      list.head.next = temp;
+    }
+  };
+
   list.contains = function(target, node){
     var currentNode = list.head;
     var valFound = false;

@@ -108,4 +108,14 @@ describe("linkedList", function() {
     expect(linkedList.head.next.prev.value).to.equal('a');
   });
 
+  it("should add to head when list is empty", function(){
+    linkedList.addToTail('a');
+    expect(linkedList.head.value).to.equal('a');
+    expect(linkedList.tail.value).to.equal('a');
+    expect(linkedList.head.next).to.equal(null);
+    expect(linkedList.head.prev).to.equal(null);
+    expect(linkedList.tail.next).to.equal(null);
+    expect(linkedList.tail.prev).to.equal(null);
+  });
+
 });
