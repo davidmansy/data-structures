@@ -10,6 +10,7 @@ var makeLinkedList = function(){
       list.tail = newNode;
     } else {  //list is populated, head doesn't change
       list.tail.next = newNode;
+      list.tail.next.prev = this.tail;
       list.tail = newNode;
     }
   };
@@ -52,6 +53,7 @@ var makeNode = function(value){
   var node = {};
   node.value = value;
   node.next = null;
+  node.prev = null;
 
   return node;
 };

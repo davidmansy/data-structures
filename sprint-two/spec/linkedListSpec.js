@@ -90,4 +90,15 @@ describe("linkedList", function() {
     expect(linkedList.findElement('c', true).next.value).to.equal('c');
   });
 
+  it("should test that node.prev points to previous node", function(){
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    expect(linkedList.findElement('a').prev).to.equal(null);
+    expect(linkedList.findElement('a').next.value).to.equal('b');
+    expect(linkedList.findElement('d').prev.value).to.equal('c');
+    expect(linkedList.findElement('d').next).to.equal(null);
+  });
+
 });
