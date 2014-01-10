@@ -47,6 +47,7 @@ describe("hashTable", function() {
       hashTable.insert(firstName,lastName);
     }
     expect(hashTable._limit).to.equal(16);
+    expect(hashTable.retrieve("Steven")).to.equal("Tyler");
   });
 
   it("should halve in size when needed", function() {
@@ -56,10 +57,13 @@ describe("hashTable", function() {
     }
     expect(hashTable._limit).to.equal(16);
     hashTable.remove("George");
-    hashTable.remove("Dr."); 
+    hashTable.remove("Dr.");
     hashTable.remove("Steven");
     hashTable.remove("John");
     hashTable.remove("Mr.");
     expect(hashTable._limit).to.equal(8);
+
+    expect(hashTable.retrieve("Steven")).to.equal(null);
   });
+
 });
