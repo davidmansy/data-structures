@@ -98,4 +98,14 @@ describe("linkedList", function() {
     expect(linkedList.findElement('d').next).to.equal(null);
   });
 
+  it("should add to head", function(){
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    linkedList.addToHead('a');
+    expect(linkedList.head.value).to.equal('a');
+    expect(linkedList.head.next.value).to.equal('b');
+    expect(linkedList.head.next.prev.value).to.equal('a');
+  });
+
 });
