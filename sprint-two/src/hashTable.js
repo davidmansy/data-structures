@@ -14,6 +14,7 @@ HashTable.prototype.insert = function(k, v){
 };
 
 
+
 HashTable.prototype.retrieve = function(k){
   var i = this.getHash(k);
   var val = null;
@@ -29,6 +30,14 @@ HashTable.prototype.retrieve = function(k){
 };
 
 HashTable.prototype.remove = function(k){
+  var i = this.getHash(k);
+
+  var bucket = this._storage.get(i);
+  _.each(bucket, function(keyValuePair, index, bucketArray) {  //key stored at [0], val stored at [1]
+    if(keyValuePair[0] === k) {
+      bucketArray.splice(index, 1);
+    }
+  });
 
 };
 
