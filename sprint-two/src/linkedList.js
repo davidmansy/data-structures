@@ -28,9 +28,15 @@ var makeLinkedList = function(){
   };
 
   list.removeValue = function(target) {
-    var prevNode = list.findElement(target, true);
-    var removedNode = prevNode.next;
-    prevNode.next = removedNode.next;
+    var node = this.findElement(target);
+    if(node) {
+      if(node.prev) {
+        node.prev.next = node.next;
+      }
+      if(node.next) {
+        node.next.prev = node.prev;
+      }
+    }
   };
 
   list.findElement = function(target) {
