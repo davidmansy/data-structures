@@ -27,9 +27,8 @@ var makeLinkedList = function(){
       list.tail = newNode;
     } else { //list is populated
       list.head.prev = newNode;
-      var temp = list.head;
-      list.head = newNode;
-      list.head.next = temp;
+      list.head.prev.next = list.head;
+      list.head = list.head.prev;
     }
   };
 
