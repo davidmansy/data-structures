@@ -3,6 +3,7 @@ var expect = chai.expect;
 describe("hashTable", function() {
   var hashTable;
   var people = [["Steven", "Tyler"], ["George", "Harrison"], ["Mr.", "Doob"], ["Dr.", "Sunshine"], ["John", "Resig"], ["Brendan", "Eich"], ["Alan", "Turing"]];
+  var similarPeople = [["Steven", "Tyler"], ["Steven", "Seagal"], ["Mr.", "Doob"], ["Dr.", "Sunshine"], ["John", "Resig"], ["John", "McEnroe"]];
 
 
   beforeEach(function() {
@@ -65,5 +66,18 @@ describe("hashTable", function() {
 
     expect(hashTable.retrieve("Steven")).to.equal(null);
   });
+
+  //New test to handle insert with the same keys
+  it("should update the value only if same key", function() {
+    for (var i = 0; i < similarPeople.length; i++){
+      var firstName = similarPeople[i][0], lastName = similarPeople[i][1];
+      hashTable.insert(firstName,lastName);
+    }
+    console.log(hashTable);
+    expect(hashTable.retrieve("Steven")).to.equal("Seagal");
+    expect(hashTable.retrieve("Mr.")).to.equal("Doob");
+    expect(hashTable.retrieve("John")).to.equal("McEnroe");
+  });
+
 
 });
