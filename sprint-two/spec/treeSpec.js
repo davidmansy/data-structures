@@ -81,6 +81,7 @@ describe("tree", function() {
     tree.children[1][0][0].addChild(8);
     tree.children[1][0][1].addChild(9);
     tree.children[0][0][0].addChild(10);
+    tree.traverse(func);
     expect(sum).to.equal(55);
   });
 
