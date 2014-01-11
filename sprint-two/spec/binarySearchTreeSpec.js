@@ -110,4 +110,14 @@ describe("binarySearchTree", function() {
     binarySearchTree.insert(9);
     expect(binarySearchTree.maxDepth).to.equal(5);
   });
+
+  it("it should calculate the depth of an unbalanced tree (3)", function(){
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(9);
+    expect(binarySearchTree.maxDepth).to.equal(4);
+  });
 });
