@@ -59,4 +59,21 @@ describe("binarySearchTree", function() {
     binarySearchTree.depthFirstLog(func);
     console.log(array);
   });
+
+  it("it should execute a callback on every value in a tree using 'breadthFirstLog", function(){
+    var str = "";
+    var func = function() {
+      str += this.value;
+    };
+
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(8);
+    binarySearchTree.breadthFirstLog(func);
+    expect(str).to.equal('5738642');
+  });
 });
