@@ -75,4 +75,15 @@ describe("binarySearchTree", function() {
     binarySearchTree.breadthFirstLog(func);
     expect(str).to.equal('5738642');
   });
+
+  it("it should return an array tree elements in order of value", function(){
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(8);
+    var arr = binarySearchTree.getOrderedArray();
+    expect(arr.join(',')).to.equal("2,3,4,5,6,7,8");
+  });
 });
