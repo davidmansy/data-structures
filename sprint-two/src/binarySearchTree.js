@@ -64,5 +64,31 @@ var binarySearchTreeMethods = {
     };
 
     processTreeElement(this);
+  },
+
+  breadthFirstLog: function(func) {
+    storage =[];
+
+    //add element to 2 dimensional array based on depth of tree
+    var recordTreeDepth = function(tree, depthVal) {
+      if(!storage[depthVal]) {
+        storage[depthVal] = [];
+      }
+      storage[depthVal].push(tree);
+      if(tree.right !== null) {
+        recordTreeDepth(tree.right, depthVal+1);
+      }
+      if(tree.left !== null) {
+        recordTreeDepth(tree.left, depthVal+1);
+      }
+    };
+    recordTreeDepth(this, 0);
+
+    //perform passed in function on each element in order
+    for(var level = 0; level < storage.length; level++) {
+      for(var tree = 0; tree < storage[level].length; tree++) {
+        func.apply(storage[level][tree]);
+      }
+    }
   }
 };
