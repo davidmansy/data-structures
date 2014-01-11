@@ -66,7 +66,6 @@ describe("binarySearchTree", function() {
       str += this.value;
     };
 
-    binarySearchTree.insert(5);
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(2);
