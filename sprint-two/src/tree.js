@@ -59,3 +59,15 @@ treeMethods.contains = function(target){
   return targetFound;
 
 };
+
+treeMethods.traverse = function(func) {
+  var performFuncOnAll = function(tree) {
+    func.call(tree);  //only apply function if tree is an object
+
+    _.each(tree.children, function(child) {
+      performFuncOnAll(child);
+    });
+  };
+
+  performFuncOnAll(this); //start recursive function at top of tree that called traverse
+};
