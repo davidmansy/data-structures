@@ -11,8 +11,13 @@ var makeBinarySearchTree = function(value){
 
 
 var binarySearchTreeMethods = {
-  insert: function() {
-
+  insert: function(value) {
+    var newTree = makeBinarySearchTree(value);
+    if(newTree.value > this.value) {
+      this.right = newTree; //
+    } else {
+      this.left = newTree;
+    } 
   },
 
   contains: function() {
