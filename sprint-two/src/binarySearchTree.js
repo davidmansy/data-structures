@@ -14,16 +14,23 @@ var binarySearchTreeMethods = {
   insert: function(value) {
     var newTree = makeBinarySearchTree(value);
 
-    if(newTree.value > this.value) {  //insert somewhere to right
-      if(this.right === null) {
-        this.right = newTree;
+    var insertValue = function(root, insertion) {
+      if(insertion.value > root.value) {  //insert somewhere to right
+        if(root.right === null) {
+          root.right = insertion;
+        } else { //try inserting at the right of the root
+          insertValue(root.right, insertion);
+        }
+      } else { //insert somewhere to left
+        if(root.left === null) {
+          root.left = insertion;
+        } else { //try inserting at the left of the root
+          insertValue(root.left, insertion);
+        }
       }
-    } else { //insert somewhere to left
-      if(this.left === null) {
-        this.left = newTree;
-      }
-    }
+    };
 
+    insertValue(this, newTree);
   },
 
   contains: function() {
