@@ -90,5 +90,42 @@ var binarySearchTreeMethods = {
         func.apply(storage[level][tree]);
       }
     }
+  },
+
+  getOrderedArray: function() {
+    var arr = [];
+    var func = function(){
+      arr.push(this.value);
+    };
+
+    var pushValues = function(tree) {
+      if(tree) {
+        if(tree.left !== null) {
+          pushValues(tree.left);
+        }
+        arr.push(tree.value);
+        if(tree.right !== null) {
+          pushValues(tree.right);
+        }
+      }
+    };
+
+
+    pushValues(this);
+    return arr;
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+

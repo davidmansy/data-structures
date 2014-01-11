@@ -83,7 +83,15 @@ describe("binarySearchTree", function() {
     binarySearchTree.insert(4);
     binarySearchTree.insert(6);
     binarySearchTree.insert(8);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(11);
+    binarySearchTree.insert(13);
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(14);
     var arr = binarySearchTree.getOrderedArray();
-    expect(arr.join(',')).to.equal("2,3,4,5,6,7,8");
+    expect(arr.join(',')).to.equal("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15");
   });
 });
