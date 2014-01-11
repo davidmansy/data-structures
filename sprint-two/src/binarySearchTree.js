@@ -47,15 +47,22 @@ var binarySearchTreeMethods = {
         }
       }
     };
-
     containValue(value, this);
     return found;
-
   },
 
-  depthFirstLog: function() {
+  depthFirstLog: function(func) {
 
+    var processTreeElement = function(tree) {
+      func.call(tree, tree.value);
+      if(tree.right !== null) {
+        processTreeElement(tree.right);
+      }
+      if(tree.left !== null) {
+        processTreeElement(tree.left);
+      }
+    };
+
+    processTreeElement(this);
   }
 };
-
-
