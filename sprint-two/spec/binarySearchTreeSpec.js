@@ -94,4 +94,20 @@ describe("binarySearchTree", function() {
     var arr = binarySearchTree.getOrderedArray();
     expect(arr.join(',')).to.equal("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15");
   });
+
+  it("it should calculate the depth of an unbalanced tree (1)", function(){
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(1);
+    expect(binarySearchTree.maxDepth).to.equal(5);
+  });
+
+  it("it should calculate the depth of an unbalanced tree (2)", function(){
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(9);
+    expect(binarySearchTree.maxDepth).to.equal(5);
+  });
 });
