@@ -63,7 +63,25 @@ describe("tree", function() {
     tree.removeFromParent(tree.children[0]);
     assert.isFalse(tree.contains(7));
     assert.isTrue(tree.contains(8));
+  });
 
+  it("should traverse every value of the tree and execute a function", function(){
+    var sum = 0;
+    var func = function(value) {
+      sum += value;
+    };
+
+    tree.addChild(1);
+    tree.addChild(2);
+    tree.children[0].addChild(3);
+    tree.children[1].addChild(4);
+    tree.children[1].addChild(5);
+    tree.children[1][0].addChild(6);
+    tree.children[1][0].addChild(7);
+    tree.children[1][0][0].addChild(8);
+    tree.children[1][0][1].addChild(9);
+    tree.children[0][0][0].addChild(10);
+    expect(sum).to.equal(55);
   });
 
 });
