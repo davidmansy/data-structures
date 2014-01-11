@@ -4,6 +4,7 @@ var makeBinarySearchTree = function(value){
   tree.right = null;
   tree.left = null;
   tree.value = value;
+  tree.maxDepth = 1;
   _.extend(tree, binarySearchTreeMethods);
 
   return tree;
@@ -13,8 +14,12 @@ var makeBinarySearchTree = function(value){
 var binarySearchTreeMethods = {
   insert: function(value) {
     var newTree = makeBinarySearchTree(value);
+    var baseTree = this;
+
+    var depthOfCurrentInsertion = 1;
 
     var insertValue = function(root, insertion) {
+      depthOfCurrentInsertion++;
       if(insertion.value > root.value) {  //insert somewhere to right
         if(root.right === null) {
           root.right = insertion;
@@ -31,6 +36,7 @@ var binarySearchTreeMethods = {
     };
 
     insertValue(this, newTree);
+    baseTree.maxDepth = (baseTree.maxDepth > depthOfCurrentInsertion) ? baseTree.maxDepth : depthOfCurrentInsertion;
   },
 
   contains: function(value) {
@@ -109,11 +115,12 @@ var binarySearchTreeMethods = {
         }
       }
     };
-
-
     pushValues(this);
     return arr;
   }
+
+
+
 };
 
 
