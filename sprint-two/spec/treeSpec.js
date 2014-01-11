@@ -67,8 +67,10 @@ describe("tree", function() {
 
   it("should traverse every value of the tree and execute a function", function(){
     var sum = 0;
-    var func = function(value) {
-      sum += value;
+    var func = function() {
+      if(this.value) {
+        sum += this.value;
+      }
     };
 
     tree.addChild(1);
@@ -76,11 +78,11 @@ describe("tree", function() {
     tree.children[0].addChild(3);
     tree.children[1].addChild(4);
     tree.children[1].addChild(5);
-    tree.children[1][0].addChild(6);
-    tree.children[1][0].addChild(7);
-    tree.children[1][0][0].addChild(8);
-    tree.children[1][0][1].addChild(9);
-    tree.children[0][0][0].addChild(10);
+    tree.children[1].children[0].addChild(6);
+    tree.children[1].children[0].addChild(7);
+    tree.children[1].children[0].children[0].addChild(8);
+    tree.children[1].children[0].children[1].addChild(9);
+    tree.children[0].children[0].addChild(10);
     tree.traverse(func);
     expect(sum).to.equal(55);
   });
