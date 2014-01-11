@@ -33,7 +33,23 @@ var binarySearchTreeMethods = {
     insertValue(this, newTree);
   },
 
-  contains: function() {
+  contains: function(value) {
+    var found = false;
+
+    var containValue = function(value, targetTree) {
+      if(value === targetTree.value) {
+        found = true;
+      } else {
+        if(value > targetTree.value && targetTree.right) {
+          containValue(value, targetTree.right);
+        } else if(targetTree.left) {
+          containValue(value, targetTree.left);
+        }
+      }
+    };
+
+    containValue(value, this);
+    return found;
 
   },
 
