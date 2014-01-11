@@ -20,8 +20,6 @@ HashTable.prototype.insert = function(k, v){
         hashTable.insert(keyValuePair[0], keyValuePair[1]);
       });
     });
-
-
   }
 
   this._currentSize++;
@@ -32,12 +30,9 @@ HashTable.prototype.insert = function(k, v){
   }
 };
 
-
-
 HashTable.prototype.retrieve = function(k){
   var i = this.getHash(k);
   var val = null;
-
   //retrieve array
   var bucket = this._storage.get(i);
   _.each(bucket, function(keyValuePair) {  //key stored at [0], val stored at [1]
@@ -49,6 +44,21 @@ HashTable.prototype.retrieve = function(k){
 };
 
 HashTable.prototype.remove = function(k){
+  if(this._currentSize <= this._limit * 0.25) {
+    var oldStorage = this._storage;
+    this._limit /= 2;
+    this._storage = makeLimitedArray(this._limit);
+    this._currentSize = 0;
+
+    //Iterate over the oldStorage
+    var hashTable = this;
+    oldStorage.each(function(bucket) {
+      _.each(bucket, function(keyValuePair) {
+        hashTable.insert(keyValuePair[0], keyValuePair[1]);
+      });
+    });
+  }
+
   var i = this.getHash(k);
   this._currentSize--;
   var bucket = this._storage.get(i);
