@@ -27,4 +27,28 @@ describe("set", function() {
     assert.isFalse(set.contains('Mel Gibson'));
   });
 
+  it("should add/remove numeric values to a set", function(){
+    set.add(10);
+    set.remove(10);
+    assert.isFalse(set.contains(10));
+    set.add(15);
+    set.add(30);
+    set.remove(15);
+    assert.isFalse(set.contains(10));
+    assert.isTrue(set.contains(30));
+  });
+
+  it("should add/remove object values to a set", function(){
+    var obj1 = {'a':1, '2':3, 'hello':undefined};
+    var obj2 = {'david':40, 'bye':null};
+    set.add(obj1);
+    set.remove(obj1);
+    assert.isFalse(set.contains(obj1));
+    set.add(obj1);
+    set.add(obj2);
+    set.remove(obj1);
+    assert.isFalse(set.contains(obj1));
+    assert.isTrue(set.contains(obj2));
+  });
+
 });
