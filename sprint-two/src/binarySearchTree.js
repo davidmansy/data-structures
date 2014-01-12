@@ -5,6 +5,7 @@ var makeBinarySearchTree = function(value){
   tree.left = null;
   tree.value = value;
   tree.maxDepth = 1;
+  tree.minDepth = 1;
   tree.depthFullness = {1: 0};
   _.extend(tree, binarySearchTreeMethods);
 
