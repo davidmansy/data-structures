@@ -5,6 +5,7 @@ var makeBinarySearchTree = function(value){
   tree.left = null;
   tree.value = value;
   tree.maxDepth = 1;
+  tree.depthFullness = {1: 0};
   _.extend(tree, binarySearchTreeMethods);
 
   return tree;
@@ -22,12 +23,20 @@ var binarySearchTreeMethods = {
       depthOfCurrentInsertion++;
       if(insertion.value > root.value) {  //insert somewhere to right
         if(root.right === null) {
+          if(!(depthOfCurrentInsertion in baseTree.depthFullness)) { //check if depth has already been reaached
+            baseTree.depthFullness[depthOfCurrentInsertion] = Math.pow(2, depthOfCurrentInsertion);
+          }
+          baseTree.depthFullness[depthOfCurrentInsertion]--;
           root.right = insertion;
         } else { //try inserting at the right of the root
           insertValue(root.right, insertion);
         }
       } else { //insert somewhere to left
         if(root.left === null) {
+          if(!(depthOfCurrentInsertion in baseTree.depthFullness)) { //check if depth has already been reaached
+            baseTree.depthFullness[depthOfCurrentInsertion] = Math.pow(2, depthOfCurrentInsertion);
+          }
+          baseTree.depthFullness[depthOfCurrentInsertion]--;
           root.left = insertion;
         } else { //try inserting at the left of the root
           insertValue(root.left, insertion);
@@ -37,6 +46,7 @@ var binarySearchTreeMethods = {
 
     insertValue(this, newTree);
     baseTree.maxDepth = (baseTree.maxDepth > depthOfCurrentInsertion) ? baseTree.maxDepth : depthOfCurrentInsertion;
+    baseTree.minDepth = (baseTree.depthFullness[depthOfCurrentInsertion] === 0) ? depthOfCurrentInsertion : baseTree.minDepth;
   },
 
   contains: function(value) {
